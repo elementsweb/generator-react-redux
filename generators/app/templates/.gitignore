@@ -1,0 +1,12 @@
+.idea
+node_modules
+npm-debug.log
+
+# Distribution files compiled
+dist
+
+# Jest test coverage reports
+coverage
+
+# VSCode configuration
+.vscode

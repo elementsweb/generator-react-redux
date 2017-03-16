@@ -11,10 +11,17 @@ module.exports = Generator.extend({
     ));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
+      name: 'author',
+      message: 'What\'s your name?'
+    }, {
+      name: 'repository_name',
+      message: 'What is the name of your project repository?'
+    }, {
+      name: 'repository_url',
+      message: 'What is your project repository URL?'
+    }, {
+      name: 'description',
+      message: 'Describe your project'
     }];
 
     return this.prompt(prompts).then(function (props) {
@@ -24,9 +31,58 @@ module.exports = Generator.extend({
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+    var unmodifiedFiles = [
+      '__mocks__',
+      'src',
+      '.babelrc',
+      '.eslintignore',
+      '.gitignore',
+      'ISSUE_TEMPLATE.md',
+      'LICENSE',
+      'server.js',
+      'webpack.config.js',
+    ];
+    unmodifiedFiles.forEach(function(file) {
+      this.fs.copy(
+        this.templatePath(file),
+        this.destinationPath(file)
+      )
+    }, this);
+
+    this.fs.copyTpl(
+      this.templatePath('CONTRIBUTING.md'),
+      this.destinationPath('CONTRIBUTING.md'),
+      {
+        repository_name: this.props.repository_name,
+        repository_url: this.props.repository_url
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('index.html'),
+      this.destinationPath('index.html'),
+      {
+        repository_name: this.props.repository_name
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('package.json'),
+      this.destinationPath('package.json'),
+      {
+        repository_name: this.props.repository_name,
+        repository_url: this.props.repository_url,
+        description: this.props.description
+      }
+    );
+    this.fs.copyTpl(
+      this.templatePath('README.md'),
+      this.destinationPath('README.md'),
+      {
+        repository_name: this.props.repository_name,
+        repository_url: this.props.repository_url,
+        description: this.props.description,
+        author: this.props.author,
+        year: new Date().getFullYear()
+      }
     );
   },
 
