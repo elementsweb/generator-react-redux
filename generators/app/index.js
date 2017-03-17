@@ -36,6 +36,7 @@ module.exports = Generator.extend({
       'src',
       '.babelrc',
       '.eslintignore',
+      '.eslintrc',
       '.gitignore',
       'ISSUE_TEMPLATE.md',
       'LICENSE',
