@@ -3,12 +3,23 @@ var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-module.exports = Generator.extend({
-  prompting: function () {
+module.exports = class extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+
+    this.option('skip-welcome', {
+      desc: 'Skips the welcome message',
+      type: Boolean
+    });
+  }
+
+  prompting() {
     // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the spectacular ' + chalk.red('generator-react-redux') + ' generator!'
-    ));
+    if (!this.options['skip-welcome']) {
+      this.log(yosay(
+        'Welcome to the spectacular ' + chalk.red('generator-react-redux') + ' generator!'
+      ));
+    }
 
     var prompts = [{
       name: 'author',
@@ -28,9 +39,9 @@ module.exports = Generator.extend({
       // To access props later use this.props.someAnswer;
       this.props = props;
     }.bind(this));
-  },
+  }
 
-  writing: function () {
+  writing() {
     var unmodifiedFiles = [
       '__mocks__',
       'src',
@@ -85,9 +96,9 @@ module.exports = Generator.extend({
         year: new Date().getFullYear()
       }
     );
-  },
+  }
 
-  install: function () {
+  install() {
     this.installDependencies();
   }
-});
+};
