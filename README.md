@@ -4,30 +4,17 @@
 Yeoman generator to provide the scaffolding for a react-redux app
 
 ## Installation
-Clone the repository and change into new directory:
+Install generator-react-redux with npm scoped package:
 
 ```
-git clone git@github.com:elementsweb/generator-react-redux.git
-cd generator-react-redux
-```
-
-Install dependencies with `npm`:
-
-```
-npm i
+npm install @j154004/generator-react-redux -g
 ```
 
 ## Usage
-As this generator isn't hosted on npm, you will need to create a link with npm:
-
-```
-npm link
-```
-
 You can use this generator with `yo` with ease. In the directory you wish to create your resource run the following command:
 
 ```
-yo react-redux
+yo @j154004/react-redux
 ```
 
 Answer the questions asked by the generator, these answers will be injected into various files that will be created in your directory.
