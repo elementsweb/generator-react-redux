@@ -1,6 +1,6 @@
 {
-  "name": "generator-react-redux",
-  "version": "0.0.0",
+  "name": "@j154004/generator-react-redux",
+  "version": "1.0.0",
   "description": "Yeoman generator to provide the scaffolding for a react-redux app",
   "author": {
     "name": "elementsweb"
