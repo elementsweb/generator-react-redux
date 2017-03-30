@@ -1,5 +1,6 @@
 # generator-react-redux
 [![Build Status](https://travis-ci.org/elementsweb/generator-react-redux.svg?branch=master)](https://travis-ci.org/elementsweb/generator-react-redux)
+[![npm version](https://badge.fury.io/js/%40j154004%2Fgenerator-react-redux.svg)](https://badge.fury.io/js/%40j154004%2Fgenerator-react-redux)
 
 Yeoman generator to provide the scaffolding for a react-redux app
 
